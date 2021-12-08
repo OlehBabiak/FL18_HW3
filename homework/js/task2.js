@@ -4,7 +4,6 @@ const prizeAmountArray = [100, 50, 25];
 let attemptLeft = 3;
 let totalPrize = 0;
 
-console.log (prizeAmountArray)
 //===============================================================================================
 function newGame () {
 
@@ -30,12 +29,25 @@ function newGame () {
                 }
                 newGame ()                                       //продовжуєм гру
             } else {
-                alert (`Thank1 you for your participation. Your prize is: ${ totalPrize } $`)  //   Якщо виграв але не продовжує Дякуєм за участь, ваш приз 100дол
+                alert (`Thank you for your participation. (вгвдав) Your prize is: ${ totalPrize } $`)//   Якщо виграв але не продовжує Дякуєм за участь, ваш приз 100дол
+                return;
             }
-           } else {
-            return
-        }
+        } else {
+            alert (`Thank you for your participation. (невгадав) Your prize is: ${ totalPrize } $`)  //   Якщо невгадав але не продовжує Дякуєм за участь, ваш приз 100дол
+        }// Якщо не вгадав, повторюєм цикл
     }
+
+
+        let answerAfterLoose = confirm ('Do you want to play again?')//Питаєм чи знову граєм
+        console.log (answerAfterLoose)
+        if (answerAfterLoose) {                                                 // Якщо так, посинаєм нову гру
+            minValue = 0;
+            maxValue = 3;
+            attemptLeft = 3;
+            totalPrize = 0;
+            newGame ()
+        }
+
 
 }
 
@@ -44,15 +56,6 @@ function newGame () {
 let firstAnswer = confirm ('Do you want to play a game?')
 if (firstAnswer) {
     newGame()
-
-    let answerAfterLoose = confirm ('Do you want to play again?')          //Питаєм чи знову граєм
-    if (answerAfterLoose) {                                                 // Якщо так, посинаєм нову гру
-        minValue = 0;
-        maxValue = 3;
-        attemptLeft = 3;
-        totalPrize = 0;
-        newGame ()
-    }
 } else {
     alert ('You did not become a billionaire, but can.')
 }
